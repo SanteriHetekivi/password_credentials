@@ -29,7 +29,9 @@ class Credentials:
         self.password = password
 
     @classmethod
-    def get(cls, service: str) -> Credentials:
+    def get(
+        cls, service: str, username: Union[str, None], password: Union[str, None]
+    ) -> Credentials:
         """Get credentials.
 
         Args:
@@ -40,10 +42,10 @@ class Credentials:
         """
 
         # Get from env.
-        username: Union[str, None] = getenv(
+        username: Union[str, None] = username or getenv(
             "{service}_USERNAME".format(service=service)
         )
-        password: Union[str, None] = getenv(
+        password: Union[str, None] = password or getenv(
             "{service}_PASSWORD".format(service=service)
         )
         # Get from input.
