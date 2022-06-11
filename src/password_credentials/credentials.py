@@ -30,7 +30,10 @@ class Credentials:
 
     @classmethod
     def get(
-        cls, service: str, username: Union[str, None], password: Union[str, None]
+        cls,
+        service: str,
+        username: Union[str, None] = None,
+        password: Union[str, None] = None,
     ) -> Credentials:
         """Get credentials.
 
